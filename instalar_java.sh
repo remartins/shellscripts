@@ -40,16 +40,13 @@ Install_jdk()
   echo "Atribuindo variaveis de ambiente !"
 
   echo "" >> ~/.bashrc
-  export JAVA_HOME="/opt/$jdk_dirname"
   echo "export JAVA_HOME=/opt/$jdk_dirname" >> ~/.bashrc
-  echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bashrc
+  echo "export PATH=$PATH:\$JAVA_HOME/bin" >> ~/.bashrc
   source ~/.bashrc
-  echo "Finalizado !"
-  
+  echo "Finalizado !" 
 }
 
 Main
-
 
 
 
