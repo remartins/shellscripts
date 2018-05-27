@@ -1,7 +1,6 @@
 #!/bin/bash
 
-JDK_FILE=$1;
-
+maven_file=$1;
 PREFIX_PATH="PATH="
 FILE=~/.bashrc
 
@@ -18,36 +17,32 @@ Main()
 
 Read_file() 
 {
-  if [ -z $JDK_FILE ]; then
-    echo "Informe o arquivo jdk*.tar.gz !"
+  if [ -z $maven_file ]; then
+    echo "Informe o arquivo maven*.tar.gz !"
     echo "Exemplo:"
-    echo "sudo ./instalar_java jdk-8u172-linux-x64.tar.gz"
+    echo "sudo ./instalar_maven apache-maven-3.5.3-bin.tar.gz"
   else
-    echo "Desinstalando o OpenJDK !"
-    apt-get remove --purge openjdk-*
-    Install_jdk
+    Install_Maven
   fi
 }
 
-Install_jdk()
+Install_Maven()
 {
   echo "Extraindo o tar.gz !"
   
-  JDK_DIR=$(tar -zxvf $JDK_FILE)
+  maven_dir=$(tar -zxvf $maven_file)
 
-  JDK_DIR_NAME=$(echo $JDK_DIR | head -n 1 | cut -d "/" -f 1)
+  maven_dir_name=$(echo $maven_dir | head -n 1 | cut -d "/" -f 1)
   
   echo "Movendo para o diretorio /opt !"
-  mv $JDK_DIR_NAME /opt
+  mv $maven_dir_name /opt
 
-  Add_Variable "JAVA_HOME" "/opt/$JDK_DIR_NAME"
+  Add_Variable "M2_HOME" "/opt/$maven_dir_name"
 
   source ~/.bashrc
 
   echo "Finalizado !" 
 }
-
-
 
 Add_Variable() 
 {

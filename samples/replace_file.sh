@@ -1,51 +1,9 @@
 #!/bin/bash
 
-JDK_FILE=$1;
+#sudo chmod +x replace_file.sh
 
 PREFIX_PATH="PATH="
-FILE=~/.bashrc
-
-
-Main()
-{
-  if [ "$(id -u)" != "0" ]; then
-    echo "Voce deve executar este script como root! "
-  else
-    Read_file
-  fi
-}
-
-
-Read_file() 
-{
-  if [ -z $JDK_FILE ]; then
-    echo "Informe o arquivo jdk*.tar.gz !"
-    echo "Exemplo:"
-    echo "sudo ./instalar_java jdk-8u172-linux-x64.tar.gz"
-  else
-    echo "Desinstalando o OpenJDK !"
-    apt-get remove --purge openjdk-*
-    Install_jdk
-  fi
-}
-
-Install_jdk()
-{
-  echo "Extraindo o tar.gz !"
-  
-  JDK_DIR=$(tar -zxvf $JDK_FILE)
-
-  JDK_DIR_NAME=$(echo $JDK_DIR | head -n 1 | cut -d "/" -f 1)
-  
-  echo "Movendo para o diretorio /opt !"
-  mv $JDK_DIR_NAME /opt
-
-  Add_Variable "JAVA_HOME" "/opt/$JDK_DIR_NAME"
-
-  source ~/.bashrc
-
-  echo "Finalizado !" 
-}
+FILE=sample.txt
 
 
 
@@ -109,6 +67,11 @@ Add_Path()
     fi
 
   fi
+}
+
+Main()
+{
+    Add_Variable "M2_HOME" "/opt/apache-maven-3.5.3"
 }
 
 Main

@@ -1,0 +1,14 @@
+
+
+
+
+
+
+
+8 This is Line 8
+8 This is Line 8
+teste
+
+
+export M2_HOME=/opt/apache-maven-3.5.3
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/jdk1.8.0_172/bin:$M2_HOME/bin
